@@ -17,6 +17,3 @@ function getRandomQuote () {
     const randomNumber = Math.floor(Math.random()*quotes.length)
     quote.innerHTML = quotes[randomNumber]
 }
-
-getRandomQuote()
-setInterval(getRandomQuote, 3000)
