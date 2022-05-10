@@ -29,8 +29,8 @@ function paintTodo(newToDo) {
     const button = document.createElement('button')
     button.innerText = '❌'
     button.addEventListener('click', deleteTodo)
-    li.appendChild(span)
     li.appendChild(button)
+    li.appendChild(span)
     todoList.appendChild(li)
 }
 
@@ -42,6 +42,7 @@ function todoFormSubmit(event) {
     toDos.push(newTodo);
     paintTodo(newTodo);
     savetoDos();
+    location.reload()
 }
 
 todoForm.addEventListener('submit', todoFormSubmit)

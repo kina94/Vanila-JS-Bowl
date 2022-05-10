@@ -1,6 +1,7 @@
 const loginForm = document.querySelector('.login-form')
 const loginInput = loginForm.querySelector('input')
 const greeting = document.querySelector('.greeting')
+const greetingMessage = greeting.querySelector('h1')
 const link = document.querySelector('a')
 
 const VISIBLE_CLASSNAME='visible'
@@ -17,8 +18,18 @@ function onLoginSubmit(event) {
 
 // 이름 입력 시 환영 메세지 출력
 function paintGreetings (username){ 
-    greeting.innerText=`Hello ${username}`
+    greetingMessage.innerText=`Hello ${username}`
     greeting.classList.toggle(VISIBLE_CLASSNAME)
+    const button = document.createElement('button')
+    button.innerText='Logout'
+    greeting.appendChild(button)
+    button.addEventListener('click', logout)
+}
+
+function logout () {
+    localStorage.removeItem(USERNAME_KEY)
+    localStorage.removeItem('toDos')
+    location.reload()
 }
 
 

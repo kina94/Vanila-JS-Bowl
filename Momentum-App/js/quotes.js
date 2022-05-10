@@ -11,9 +11,11 @@ const quotes = [
     ['이를 악물면 뭐든 할 수 있어!'],
 ]
 
-const quote = document.querySelector('.quote span')
+const quote = document.querySelector('.quotes span')
 
 function getRandomQuote () {
     const randomNumber = Math.floor(Math.random()*quotes.length)
     quote.innerHTML = quotes[randomNumber]
 }
+
+getRandomQuote()
