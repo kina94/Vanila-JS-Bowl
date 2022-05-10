@@ -1,0 +1,7 @@
+.login-form, .greeting{
+    display:none
+}
+
+.visible{
+    display:block;
+}
