@@ -2,12 +2,12 @@
 //왜냐? 경로가 바뀔 때마다 Nodes 의 Node가 렌더링 되기 때문 => state 필요.
 
 export default function Nodes({ $app, initialState, onClick }) {
-    this.state = initialState;
+    this.state = initialState; // Nodes에서 관리될 State 초기화
     this.onClick = onClick
 
     this.$target = document.createElement('div')
     this.$target.className = 'Nodes'
-    $app.appendChild(this.$target)
+    $app.appendChild(this.$target) //Nodes 클래스명을 가진 div 추가
 
     this.setState = (nextState) => {
         this.state = nextState
@@ -16,8 +16,9 @@ export default function Nodes({ $app, initialState, onClick }) {
 
     this.render = () => { // 어떤게 렌더링 될건데?
         //state로 받아온 node들을 렌더링 할거임. 근데 루트경로일 때랑 루트경로 아닐때랑 구분해서 렌더링 해야함.
+        //그러면? root 경로인지 아닌지 알려줄 boolean형 state가 필요함! (isRoot)
         const showNode = this.state.nodes.map(node => {
-            return `<div class='Node' id=${node.id}> 
+            return `<div class='Node' id=${node.id}>
                 <div>${node.name}</div></div>`
         }).join('')
 
@@ -28,6 +29,7 @@ export default function Nodes({ $app, initialState, onClick }) {
 
     this.render()
 
+    // 클릭한 노드를 렌더링할 때 사용
     this.$target.addEventListener('click', (e)=>{
         // 가장 가까운 부모 요소의 id 가져오기
         const nodeId = e.target.closest('.Node').id 
